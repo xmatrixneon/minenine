@@ -1,0 +1,38 @@
+<svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="frameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D1D1F" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#1D1D1F" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#1a1a2e" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Device Shadow -->
+  <ellipse cx="100" cy="270" rx="80" ry="10" fill="rgba(0,0,0,0.1)"/>
+
+  <!-- iPhone Frame -->
+  <rect x="35" y="25" width="90" height="190" rx="30" fill="url(#frameGrad)"/>
+  <rect x="40" y="20" width="50" height="164" rx="20" fill="#000000"/>
+  <rect x="85" y="35" width="36" height="14" rx="9" fill="url(#screenGrad)" opacity="0.3"/>
+
+  <!-- Touch ID / Home Button -->
+  <rect x="25" y="95" width="6" height="30" rx="3" fill="#2A2A2C" opacity="0.3"/>
+  <rect x="85" y="130" width="6" height="25" rx="2.5" fill="#2A2A2C" opacity="0.3"/>
+
+  <!-- Volume Buttons -->
+  <rect x="91" y="130" width="5" height="25" rx="2.5" fill="#2A2A2C" opacity="0.3"/>
+  <rect x="91" y="160" width="5" height="25" rx="2.5" fill="#2A2A2C" opacity="0.3"/>
+
+  <!-- Camera Module -->
+  <rect x="40" y="28" width="24" height="24" rx="6" fill="#2A2A2C"/>
+  <circle cx="52" cy="34" r="5" fill="#3A3A3C"/>
+  <rect x="85" y="35" width="36" height="14" rx="9" fill="#000000"/>
+
+  <!-- Front Camera -->
+  <circle cx="100" cy="70" r="6" fill="#1A1A1E"/>
+  <ellipse cx="95" cy="70" rx="12" fill="rgba(255,255,255,255,0.1)" stroke="#000000" stroke-width="2"/>
+</svg>
