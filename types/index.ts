@@ -7,11 +7,14 @@ export type IphoneModel =
   | "iPhone 15 Pro"
   | "iPhone 15 Plus"
   | "iPhone 15"
-  | "iPhone SE";
+  | "iPhone 17e"
+  | "iPhone SE"
+  | "Apple Watch Ultra 3"
+  | "Apple Watch Series 8";
 
 export type IphoneColor = string;
 
-export type StorageOption = "64GB" | "128GB" | "256GB" | "512GB" | "1TB";
+export type StorageOption = "64GB" | "128GB" | "256GB" | "512GB" | "1TB" | "41mm" | "45mm" | "49mm";
 
 export interface ColorVariant {
   name: string;
