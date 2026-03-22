@@ -11,7 +11,7 @@ interface ProductDetailSheetProps {
   iphone: Iphone;
   initialColor: ColorVariant;
   initialStorage: StoragePricing;
-  onAddToCart: () => void;
+  onBuyNow: () => void;
   onColorChange: (color: ColorVariant) => void;
   onStorageChange: (storage: StoragePricing) => void;
 }
@@ -22,7 +22,7 @@ export function ProductDetailSheet({
   iphone,
   initialColor,
   initialStorage,
-  onAddToCart,
+  onBuyNow,
   onColorChange,
   onStorageChange,
 }: ProductDetailSheetProps) {
@@ -287,6 +287,16 @@ export function ProductDetailSheet({
 
           {/* Bottom Spacer for sticky action bar */}
           <div className="h-24 sm:h-8" />
+        </div>
+
+        {/* Buy Now Button - Fixed at bottom */}
+        <div className="p-4 sm:p-6 border-t border-gray-200/50 dark:border-gray-800/50 bg-white dark:bg-gray-950">
+          <Button
+            onClick={onBuyNow}
+            className="w-full h-12 rounded-full font-semibold text-base bg-blue-600 hover:bg-blue-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+          >
+            Buy Now - FREE
+          </Button>
         </div>
       </div>
     </>

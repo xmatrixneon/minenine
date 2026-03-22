@@ -1,16 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ShoppingBag, Menu, X, Package, Clock } from "lucide-react";
+import { Menu, X, Package, Clock } from "lucide-react";
 import Image from "next/image";
 
 interface HeaderProps {
-  cartCount: number;
-  onCartClick: () => void;
   onOrdersClick?: () => void;
 }
 
-export function Header({ cartCount, onCartClick, onOrdersClick }: HeaderProps) {
+export function Header({ onOrdersClick }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // 24-hour countdown timer for free offer - persisted in localStorage
@@ -159,19 +157,6 @@ export function Header({ cartCount, onCartClick, onOrdersClick }: HeaderProps) {
               >
                 <Package className="h-4 w-4" />
                 <span>My Orders</span>
-              </button>
-
-              <button
-                onClick={onCartClick}
-                className="relative p-2 text-gray-900 dark:text-white/90 hover:opacity-70 transition-opacity"
-                aria-label="Shopping bag"
-              >
-                <ShoppingBag className="h-5 w-5" />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 h-5 w-5 bg-blue-600 rounded-full text-[10px] text-white font-semibold flex items-center justify-center animate-in fade-in zoom-in">
-                    {cartCount}
-                  </span>
-                )}
               </button>
 
               {/* Mobile Menu Button */}

@@ -4,62 +4,33 @@ import { useState, useEffect } from "react";
 import { Header } from "@/components/header";
 import { HeroSlideshow } from "@/components/hero-slideshow";
 import { ProductCard } from "@/components/product-card";
-import { CartDrawer } from "@/components/cart-drawer";
 import { MobileBottomNav } from "@/components/mobile-bottom-nav";
 import { ProductDetailSheet } from "@/components/product-detail-sheet";
-import { StickyActionBar } from "@/components/sticky-action-bar";
 import { Checkout } from "@/components/checkout";
 import { OrdersModal } from "@/components/orders-modal";
 import { iphones } from "@/data/iphones";
-import { CartItem, ColorVariant, StoragePricing, Iphone, Address } from "@/types";
+import { Iphone, ColorVariant, StoragePricing, Address } from "@/types";
 
 type ViewMode = "home" | "product-detail";
 
 export default function Home() {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [isOrdersOpen, setIsOrdersOpen] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("home");
   const [selectedProduct, setSelectedProduct] = useState<Iphone | null>(null);
-  // Track selected color and storage for the current product
   const [selectedColor, setSelectedColor] = useState<ColorVariant | null>(null);
   const [selectedStorage, setSelectedStorage] = useState<StoragePricing | null>(null);
-
-  // Calculate cart totals
-  const subtotal = cartItems.reduce((sum, item) => sum + item.totalPrice, 0);
-  const totalItems = cartItems.length;
-
-  // Add item to cart
-  const addToCart = (
-    iphone: Iphone,
-    color: ColorVariant,
-    storage: StoragePricing
-  ) => {
-    const cartItem: CartItem = {
-      ...iphone,
-      selectedColor: color,
-      selectedStorage: storage,
-      quantity: 1,
-      totalPrice: storage.price,
-    };
-
-    setCartItems([...cartItems, cartItem]);
-    // Auto-open cart drawer when item is added
-    setIsCartOpen(true);
-  };
-
-  // Remove item from cart
-  const removeFromCart = (index: number) => {
-    setCartItems(cartItems.filter((_, i) => i !== index));
-  };
+  const [checkoutItem, setCheckoutItem] = useState<{
+    iphone: Iphone;
+    color: ColorVariant;
+    storage: StoragePricing;
+  } | null>(null);
 
   // Open product detail
-  const openProductDetail = (iphone: Iphone) => {
+  const openProductDetail = (iphone: Iphone, color: ColorVariant, storage: StoragePricing) => {
     setSelectedProduct(iphone);
-    // Initialize selections
-    setSelectedColor(iphone.colors[0]);
-    setSelectedStorage(iphone.storageOptions[0]);
+    setSelectedColor(color);
+    setSelectedStorage(storage);
     setViewMode("product-detail");
   };
 
@@ -84,32 +55,38 @@ export default function Home() {
   // Handle buy now from product detail
   const handleBuyNow = () => {
     if (selectedProduct && selectedColor && selectedStorage) {
-      addToCart(selectedProduct, selectedColor, selectedStorage);
+      setCheckoutItem({
+        iphone: selectedProduct,
+        color: selectedColor,
+        storage: selectedStorage
+      });
       setIsCheckoutOpen(true);
     }
   };
 
-  // Handle checkout from cart
-  const handleCheckout = () => {
-    if (cartItems.length === 0) return;
+  // Handle buy now from product card
+  const handleQuickBuy = (iphone: Iphone, color: ColorVariant, storage: StoragePricing) => {
+    setCheckoutItem({
+      iphone,
+      color,
+      storage
+    });
     setIsCheckoutOpen(true);
-    setIsCartOpen(false);
   };
 
   // Confirm order
   const handleConfirmOrder = (address: Address, paymentMethod: string) => {
-    console.log("Order confirmed:", { cartItems, address, paymentMethod });
-    // Don't close checkout - let it stay so user can see confirmation
+    console.log("Order confirmed:", { checkoutItem, address, paymentMethod });
     // Close checkout after delay so confirmation animation shows
     setTimeout(() => {
-      setCartItems([]);
       setIsCheckoutOpen(false);
+      setCheckoutItem(null);
     }, 3000);
   };
 
   // Prevent body scroll when modals are open
   useEffect(() => {
-    if (isCartOpen || isCheckoutOpen || isOrdersOpen || viewMode === "product-detail") {
+    if (isCheckoutOpen || isOrdersOpen || viewMode === "product-detail") {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -117,25 +94,12 @@ export default function Home() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isCartOpen, isCheckoutOpen, isOrdersOpen, viewMode]);
-
-  // Get current price for sticky action bar
-  const getCurrentPrice = () => {
-    if (selectedStorage) {
-      return selectedStorage.price;
-    }
-    if (selectedProduct) {
-      return selectedProduct.basePrice;
-    }
-    return 0;
-  };
+  }, [isCheckoutOpen, isOrdersOpen, viewMode]);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black pb-20 md:pb-0">
       {/* Header */}
       <Header
-        cartCount={totalItems}
-        onCartClick={() => setIsCartOpen(true)}
         onOrdersClick={() => setIsOrdersOpen(true)}
       />
 
@@ -167,7 +131,7 @@ export default function Home() {
                     <button
                       onClick={() => {
                         const iphone = iphones.find(i => i.id === 'iphone-16-pro-max');
-                        if (iphone) openProductDetail(iphone);
+                        if (iphone) openProductDetail(iphone, iphone.colors[0], iphone.storageOptions[0]);
                       }}
                       className="h-14 px-10 text-lg font-semibold rounded-full bg-white text-gray-900 hover:bg-gray-100 transition-all duration-200 hover:scale-105 shadow-2xl"
                     >
@@ -176,7 +140,7 @@ export default function Home() {
                     <button
                       onClick={() => {
                         const iphone = iphones.find(i => i.id === 'iphone-16-pro-max');
-                        if (iphone) openProductDetail(iphone);
+                        if (iphone) openProductDetail(iphone, iphone.colors[0], iphone.storageOptions[0]);
                       }}
                       className="h-14 px-10 text-lg font-semibold rounded-full border-2 border-white text-white hover:bg-white/10 transition-all duration-200 hover:scale-105"
                     >
@@ -211,7 +175,6 @@ export default function Home() {
                     <ProductCard
                       iphone={iphone}
                       onClick={openProductDetail}
-                      onQuickAdd={addToCart}
                     />
                   </div>
                 ))}
@@ -313,7 +276,7 @@ export default function Home() {
           iphone={selectedProduct}
           initialColor={selectedColor || selectedProduct.colors[0]}
           initialStorage={selectedStorage || selectedProduct.storageOptions[0]}
-          onAddToCart={handleBuyNow}
+          onBuyNow={handleBuyNow}
           onColorChange={handleColorChange}
           onStorageChange={handleStorageChange}
         />
@@ -325,51 +288,25 @@ export default function Home() {
         onClose={() => setIsOrdersOpen(false)}
       />
 
-      {/* Cart Drawer */}
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        items={cartItems}
-        subtotal={subtotal}
-        onRemoveItem={removeFromCart}
-        onCheckout={handleCheckout}
-      />
-
       {/* Checkout Modal */}
       <Checkout
         isOpen={isCheckoutOpen}
         onClose={() => setIsCheckoutOpen(false)}
-        items={cartItems}
-        subtotal={subtotal}
+        items={checkoutItem ? [{
+          ...checkoutItem.iphone,
+          selectedColor: checkoutItem.color,
+          selectedStorage: checkoutItem.storage,
+          quantity: 1,
+          totalPrice: 0,
+        }] : []}
+        subtotal={0}
         onConfirmOrder={handleConfirmOrder}
         onShowOrders={() => setIsOrdersOpen(true)}
       />
 
-      {/* Sticky Action Bar */}
-      {viewMode === "product-detail" && selectedProduct && (
-        <StickyActionBar
-          mode="product"
-          productName={selectedProduct.model}
-          price={getCurrentPrice()}
-          onBuyNow={handleBuyNow}
-        />
-      )}
-
-      {viewMode === "home" && cartItems.length > 0 && (
-        <StickyActionBar
-          mode="cart"
-          cartCount={totalItems}
-          subtotal={subtotal}
-          onCartClick={() => setIsCartOpen(true)}
-          onCheckout={handleCheckout}
-        />
-      )}
-
       {/* Mobile Bottom Navigation - Hide in product detail mode */}
       {viewMode === "home" && (
         <MobileBottomNav
-          cartCount={totalItems}
-          onCartClick={() => setIsCartOpen(true)}
           onOrdersClick={() => setIsOrdersOpen(true)}
         />
       )}

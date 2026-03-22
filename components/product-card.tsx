@@ -1,36 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { Plus } from "lucide-react";
 import { Iphone, ColorVariant, StoragePricing } from "@/types";
 import { Button } from "@/components/ui/button";
 
 interface ProductCardProps {
   iphone: Iphone;
-  onClick: (iphone: Iphone) => void;
-  onQuickAdd: (
-    iphone: Iphone,
-    color: ColorVariant,
-    storage: StoragePricing
-  ) => void;
+  onClick: (iphone: Iphone, color: ColorVariant, storage: StoragePricing) => void;
 }
 
-export function ProductCard({ iphone, onClick, onQuickAdd }: ProductCardProps) {
+export function ProductCard({ iphone, onClick }: ProductCardProps) {
   const [selectedColor, setSelectedColor] = useState<ColorVariant>(iphone.colors[0]);
   const [selectedStorage, setSelectedStorage] = useState<StoragePricing>(
     iphone.storageOptions[0]
   );
 
-  const handleQuickAdd = (e: React.MouseEvent) => {
+  const handleQuickBuy = (e: React.MouseEvent) => {
     e.stopPropagation();
-    onQuickAdd(iphone, selectedColor, selectedStorage);
+    onClick(iphone, selectedColor, selectedStorage);
   };
 
   return (
-    <div
-      onClick={() => onClick(iphone)}
-      className="group bg-white dark:bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-200/50 dark:border-gray-800/50 hover:border-gray-300 dark:hover:border-gray-700/50 transition-all duration-300 hover:shadow-lg dark:hover:shadow-black/20 cursor-pointer"
-    >
+    <div className="group bg-white dark:bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-200/50 dark:border-gray-800/50 hover:border-gray-300 dark:hover:border-gray-700/50 transition-all duration-300 hover:shadow-lg dark:hover:shadow-black/20">
       {/* Product Image Area */}
       <div className="relative aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 p-8 flex items-center justify-center overflow-hidden">
         {iphone.isNew && (
@@ -139,13 +130,12 @@ export function ProductCard({ iphone, onClick, onQuickAdd }: ProductCardProps) {
           </div>
         </div>
 
-        {/* Add to Cart Button */}
+        {/* Buy Now Button */}
         <Button
-          onClick={handleQuickAdd}
+          onClick={handleQuickBuy}
           className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 rounded-full font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
         >
-          <Plus className="h-5 w-5 mr-2" />
-          Add to Bag
+          Buy Now
         </Button>
       </div>
     </div>

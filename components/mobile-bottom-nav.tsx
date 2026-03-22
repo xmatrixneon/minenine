@@ -1,15 +1,13 @@
 "use client";
 
-import { Home, ShoppingBag, User, Package } from "lucide-react";
+import { Home, Package } from "lucide-react";
 import { useState } from "react";
 
 interface MobileBottomNavProps {
-  cartCount: number;
-  onCartClick: () => void;
   onOrdersClick?: () => void;
 }
 
-export function MobileBottomNav({ cartCount, onCartClick, onOrdersClick }: MobileBottomNavProps) {
+export function MobileBottomNav({ onOrdersClick }: MobileBottomNavProps) {
   const [activeTab, setActiveTab] = useState("home");
 
   return (
@@ -57,38 +55,14 @@ export function MobileBottomNav({ cartCount, onCartClick, onOrdersClick }: Mobil
           <span className="text-[10px] font-medium mt-1">Products</span>
         </button>
 
-        {/* Cart Tab */}
+        {/* Orders Tab */}
         <button
           onClick={() => {
-            onCartClick();
-            setActiveTab("cart");
-          }}
-          className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
-            activeTab === "cart"
-              ? "text-blue-600 dark:text-blue-400"
-              : "text-gray-500 dark:text-gray-400"
-          }`}
-          aria-label="Cart"
-        >
-          <div className="relative">
-            <ShoppingBag className="h-5 w-5" />
-            {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 h-4 w-4 bg-blue-600 rounded-full text-[9px] text-white font-semibold flex items-center justify-center">
-                {cartCount}
-              </span>
-            )}
-          </div>
-          <span className="text-[10px] font-medium mt-1">Bag</span>
-        </button>
-
-        {/* Profile Tab */}
-        <button
-          onClick={() => {
-            setActiveTab("profile");
+            setActiveTab("orders");
             if (onOrdersClick) onOrdersClick();
           }}
           className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
-            activeTab === "profile"
+            activeTab === "orders"
               ? "text-blue-600 dark:text-blue-400"
               : "text-gray-500 dark:text-gray-400"
           }`}
