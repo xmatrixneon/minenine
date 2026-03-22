@@ -110,20 +110,20 @@ export default function Home() {
 
         {/* Products Section - Hide in product detail mode */}
         {viewMode === "home" && (
-          <section id="products" className="py-8 sm:py-12">
-            <div className="mx-auto max-w-[1440px] px-3 sm:px-4 lg:px-8">
+          <section id="products" className="py-4 sm:py-6">
+            <div className="mx-auto max-w-[1600px] px-2 sm:px-4">
               {/* Section Header - Flipkart Style */}
-              <div className="bg-white dark:bg-gray-900 p-4 rounded mb-4 sm:mb-6 shadow-sm">
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">
+              <div className="bg-white dark:bg-gray-900 p-3 rounded mb-3 shadow-sm">
+                <h2 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-white">
                   iPhones - <span className="text-green-600 dark:text-green-400 font-bold">FREE</span>
                 </h2>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                <p className="text-[10px] text-gray-500 dark:text-gray-400">
                   Limited time offer • Free delivery • COD available
                 </p>
               </div>
 
-              {/* Products Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-4">
+              {/* Products Grid - Bigger cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
                 {iphones.map((iphone, index) => (
                   <div
                     key={iphone.id}
