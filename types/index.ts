@@ -49,7 +49,7 @@ export interface Specifications {
     audioPlayback: string;
     fastCharging: string;
   };
-  storage: {
+  storage?: {
     options: StoragePricing[];
   };
   physical: {
