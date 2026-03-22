@@ -97,79 +97,39 @@ export default function Home() {
   }, [isCheckoutOpen, isOrdersOpen, viewMode]);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-black pb-20 md:pb-0">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 pb-14 md:pb-0">
       {/* Header */}
       <Header
         onOrdersClick={() => setIsOrdersOpen(true)}
       />
 
       {/* Main Content */}
-      <main className="pt-14">
+      <main className="pt-12 sm:pt-14">
         {/* Hero Section - Hide in product detail mode */}
         {viewMode === "home" && <HeroSlideshow />}
 
         {/* Products Section - Hide in product detail mode */}
         {viewMode === "home" && (
-          <section id="products" className="py-16 sm:py-24">
-            {/* iPhone 16 Pro Max Featured Image */}
-            <div className="relative w-full mb-8 sm:mb-12 overflow-hidden bg-black">
-              <img
-                src="/images/iphones/shopping3.webp"
-                alt="iPhone 16 Pro Max"
-                className="w-full h-[50vh] sm:h-[60vh] lg:h-[70vh] object-cover object-center"
-              />
-              {/* Product Title Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-black/50 backdrop-blur-xl rounded-3xl p-8 sm:p-12 lg:p-16 mx-auto max-w-4xl text-center">
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4">
-                    iPhone 16 Pro Max
-                  </h2>
-                  <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8">
-                    Titanium. So strong. So Pro. So Max.
-                  </p>
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button
-                      onClick={() => {
-                        const iphone = iphones.find(i => i.id === 'iphone-16-pro-max');
-                        if (iphone) openProductDetail(iphone, iphone.colors[0], iphone.storageOptions[0]);
-                      }}
-                      className="h-14 px-10 text-lg font-semibold rounded-full bg-white text-gray-900 hover:bg-gray-100 transition-all duration-200 hover:scale-105 shadow-2xl"
-                    >
-                      Shop Now
-                    </button>
-                    <button
-                      onClick={() => {
-                        const iphone = iphones.find(i => i.id === 'iphone-16-pro-max');
-                        if (iphone) openProductDetail(iphone, iphone.colors[0], iphone.storageOptions[0]);
-                      }}
-                      className="h-14 px-10 text-lg font-semibold rounded-full border-2 border-white text-white hover:bg-white/10 transition-all duration-200 hover:scale-105"
-                    >
-                      View Details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
-              {/* Section Header */}
-              <div className="text-center mb-12 sm:mb-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Which iPhone is right for you?
+          <section id="products" className="py-8 sm:py-12">
+            <div className="mx-auto max-w-[1440px] px-3 sm:px-4 lg:px-8">
+              {/* Section Header - Flipkart Style */}
+              <div className="bg-white dark:bg-gray-900 p-4 rounded mb-4 sm:mb-6 shadow-sm">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">
+                  iPhones - <span className="text-green-600 dark:text-green-400 font-bold">FREE</span>
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                  Compare all iPhone models and find the perfect one for your needs.
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  Limited time offer • Free delivery • COD available
                 </p>
               </div>
 
               {/* Products Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-4">
                 {iphones.map((iphone, index) => (
                   <div
                     key={iphone.id}
                     className="animate-in fade-in slide-in-from-bottom-4 duration-500"
                     style={{
-                      animationDelay: `${index * 100}ms`,
+                      animationDelay: `${index * 50}ms`,
                     }}
                   >
                     <ProductCard
@@ -311,20 +271,27 @@ export default function Home() {
         />
       )}
 
-      {/* Footer */}
-      <footer className="hidden md:block bg-gray-100 dark:bg-gray-900/50 py-8 border-t border-gray-200/50 dark:border-gray-800/50">
+      {/* Footer - Flipkart Style */}
+      <footer className="hidden md:block bg-[#2874f0] text-white py-8 border-t border-[#1a5bbf]">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400">
-            <p>© 2026 Apple Store Clone. All rights reserved.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-gray-900 dark:hover:text-white">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm">
+            <div className="flex items-center gap-2 mb-4 md:mb-0">
+              <span className="text-xl font-bold italic">iStore</span>
+              <span className="text-xs font-bold bg-[#ffe500] text-gray-900 px-1.5 py-0.5 rounded">Plus</span>
+              <span className="ml-4 text-white/80">© 2026. All rights reserved.</span>
+            </div>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-[#ffe500] transition-colors">
+                About Us
+              </a>
+              <a href="#" className="hover:text-[#ffe500] transition-colors">
+                Contact
+              </a>
+              <a href="#" className="hover:text-[#ffe500] transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="hover:text-gray-900 dark:hover:text-white">
-                Terms of Use
-              </a>
-              <a href="#" className="hover:text-gray-900 dark:hover:text-white">
-                Sales Policy
+              <a href="#" className="hover:text-[#ffe500] transition-colors">
+                Terms
               </a>
             </div>
           </div>

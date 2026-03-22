@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Iphone, ColorVariant, StoragePricing } from "@/types";
-import { Button } from "@/components/ui/button";
+import { Star, Shield } from "lucide-react";
 
 interface ProductCardProps {
   iphone: Iphone;
@@ -20,97 +20,108 @@ export function ProductCard({ iphone, onClick }: ProductCardProps) {
     onClick(iphone, selectedColor, selectedStorage);
   };
 
+  // Generate random rating between 4.0 and 4.8
+  const rating = (4 + Math.random() * 0.8).toFixed(1);
+  const ratingsCount = Math.floor(Math.random() * 5000) + 1000;
+
   return (
-    <div className="group bg-white dark:bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-200/50 dark:border-gray-800/50 hover:border-gray-300 dark:hover:border-gray-700/50 transition-all duration-300 hover:shadow-lg dark:hover:shadow-black/20">
+    <div className="group bg-white dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-all duration-300 cursor-pointer">
       {/* Product Image Area */}
-      <div className="relative aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 p-8 flex items-center justify-center overflow-hidden">
-        {iphone.isNew && (
-          <div className="absolute top-4 left-4 bg-red-500 text-white text-xs font-medium px-3 py-1 rounded-full">
-            New
+      <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 p-4 flex items-center justify-center overflow-hidden">
+        {/* Badges */}
+        <div className="absolute top-2 left-2 z-10 flex gap-1">
+          {iphone.isNew && (
+            <span className="bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">
+              NEW
+            </span>
+          )}
+          {iphone.isPro && (
+            <span className="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">
+              PRO
+            </span>
+          )}
+        </div>
+
+        {/* Assured Badge */}
+        <div className="absolute top-2 right-2 z-10">
+          <div className="bg-white dark:bg-gray-800 rounded px-1.5 py-0.5 flex items-center gap-1 shadow-sm">
+            <span className="text-[8px] font-bold text-[#2874f0]">ASSURED</span>
           </div>
-        )}
-        {iphone.isPro && (
-          <div className="absolute top-4 right-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-medium px-3 py-1 rounded-full">
-            Pro
-          </div>
-        )}
+        </div>
 
         {/* iPhone Image */}
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative w-full h-36 flex items-center justify-center">
           <img
             src={iphone.image}
             alt={iphone.model}
-            className="object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2"
-            style={{
-              filter: `drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))`
-            }}
+            className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
           />
         </div>
       </div>
 
       {/* Product Info */}
-      <div className="p-6 space-y-4">
-        <div>
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
-            {iphone.model}
-          </h3>
-          <p className="text-sm text-green-600 dark:text-green-400 font-medium">
-            FREE
-          </p>
+      <div className="p-3 space-y-2">
+        {/* Title */}
+        <h3 className="text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2 leading-tight">
+          {iphone.model}
+        </h3>
+
+        {/* Rating */}
+        <div className="flex items-center gap-1">
+          <div className="flex items-center bg-green-600 text-white text-[10px] px-1.5 py-0.5 rounded gap-0.5">
+            <span className="font-bold">{rating}</span>
+            <Star className="h-2.5 w-2.5 fill-white" />
+          </div>
+          <span className="text-[10px] text-gray-500 dark:text-gray-400">
+            ({ratingsCount.toLocaleString()})
+          </span>
         </div>
 
-        <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
-          {iphone.description}
-        </p>
+        {/* Price - FREE */}
+        <div className="flex items-center gap-2">
+          <span className="text-lg font-bold text-gray-900 dark:text-white">FREE</span>
+          <span className="text-xs text-gray-500 dark:text-gray-400 line-through">₹1</span>
+        </div>
+
+        {/* Offers */}
+        <div className="text-[10px] text-gray-600 dark:text-gray-400">
+          <span className="text-green-700 dark:text-green-400 font-medium">Free Delivery</span>
+          <span className="mx-1">•</span>
+          <span>COD Available</span>
+        </div>
 
         {/* Color Selector */}
-        <div className="space-y-2">
-          <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-            Color
+        <div className="space-y-1">
+          <p className="text-[10px] font-medium text-gray-500 dark:text-gray-400">
+            Color: <span className="text-gray-800 dark:text-gray-200">{selectedColor.name}</span>
           </p>
-          <div className="flex flex-wrap gap-2">
-            {iphone.colors.map((color) => (
+          <div className="flex gap-1.5">
+            {iphone.colors.slice(0, 4).map((color) => (
               <button
                 key={color.name}
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelectedColor(color);
                 }}
-                className={`relative h-8 w-8 rounded-full border-2 transition-all duration-200 ${
+                className={`h-5 w-5 rounded-full border transition-all ${
                   selectedColor.name === color.name
-                    ? "border-gray-900 dark:border-white scale-110"
-                    : "border-transparent hover:scale-105"
+                    ? "border-[#2874f0] border-2 scale-110"
+                    : "border-gray-300 hover:scale-105"
                 }`}
                 style={{ backgroundColor: color.hex }}
                 aria-label={color.name}
                 title={color.name}
-              >
-                {selectedColor.name === color.name && (
-                  <svg
-                    className="absolute inset-0 m-auto h-4 w-4 text-gray-900 dark:text-white pointer-events-none"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={3}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                )}
-              </button>
+              />
             ))}
           </div>
         </div>
 
         {/* Storage Selector */}
-        <div className="space-y-2">
-          <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-            Storage
+        <div className="space-y-1">
+          <p className="text-[10px] font-medium text-gray-500 dark:text-gray-400">
+            Storage: <span className="text-gray-800 dark:text-gray-200">{selectedStorage.storage}</span>
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1">
             {iphone.storageOptions.map((storage) => (
               <button
                 key={storage.storage}
@@ -118,10 +129,10 @@ export function ProductCard({ iphone, onClick }: ProductCardProps) {
                   e.stopPropagation();
                   setSelectedStorage(storage);
                 }}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                className={`px-2 py-1 rounded text-[10px] font-medium transition-all ${
                   selectedStorage.storage === storage.storage
-                    ? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
-                    : "bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+                    ? "bg-[#2874f0] text-white"
+                    : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                 }`}
               >
                 {storage.storage}
@@ -130,13 +141,16 @@ export function ProductCard({ iphone, onClick }: ProductCardProps) {
           </div>
         </div>
 
-        {/* Buy Now Button */}
-        <Button
+        {/* Buy Now Button - Flipkart Yellow */}
+        <button
           onClick={handleQuickBuy}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 rounded-full font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+          className="w-full bg-[#ffe500] hover:bg-[#ffd000] text-gray-900 h-9 rounded font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2"
         >
-          Buy Now
-        </Button>
+          <span>BUY NOW</span>
+          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </button>
       </div>
     </div>
   );

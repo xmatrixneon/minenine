@@ -1,16 +1,16 @@
 import { Iphone } from "@/types";
 
-// Local iPhone SVG images
+// Local iPhone images
 const iPhoneImages = {
-  "iphone-16-pro-max": "/images/iphones/iphone-16-pro-max.svg",
-  "iphone-16-pro": "/images/iphones/iphone-16-pro.svg",
-  "iphone-16-plus": "/images/iphones/iphone-16-plus.svg",
-  "iphone-16": "/images/iphones/iphone-16.svg",
-  "iphone-15-pro-max": "/images/iphones/iphone-15-pro-max.svg",
-  "iphone-15-pro": "/images/iphones/iphone-15-pro.svg",
-  "iphone-15-plus": "/images/iphones/iphone-15-plus.svg",
-  "iphone-15": "/images/iphones/iphone-15.svg",
-  "iphone-se": "/images/iphones/iphone-se.svg",
+  "iphone-16-pro-max": "/images/phones/iphone-16-pro-max.jpg",
+  "iphone-16-pro": "/images/phones/iphone-16-pro.jpg",
+  "iphone-16-plus": "/images/phones/iphone-16-plus.jpg",
+  "iphone-16": "/images/phones/iphone-16.jpg",
+  "iphone-15-pro-max": "/images/phones/iphone-15-pro-max.jpg",
+  "iphone-15-pro": "/images/phones/iphone-15-pro.jpg",
+  "iphone-15-plus": "/images/phones/iphone-15-plus.jpg",
+  "iphone-15": "/images/phones/iphone-15.jpg",
+  "iphone-se": "/images/phones/iphone-se.jpg",
 };
 
 export const iphones: Iphone[] = [

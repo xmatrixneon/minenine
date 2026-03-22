@@ -240,51 +240,55 @@ export function Checkout({
       {/* Checkout Modal */}
       <div className="fixed inset-0 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-full sm:max-w-2xl sm:max-h-[90vh] bg-white dark:bg-gray-950 z-[51] shadow-2xl animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-bottom-8 duration-300 ease-out overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200/50 dark:border-gray-800/50">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between p-3 sm:p-4 border-b border-gray-200 dark:border-gray-800 bg-[#2874f0]">
+          <div className="flex items-center gap-2">
             <button
               onClick={onClose}
-              className="p-2 -ml-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+              className="p-1.5 -ml-1.5 text-white hover:bg-white/20 rounded transition-colors"
               aria-label="Close"
             >
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5" />
             </button>
             <div>
-              <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">
+              <h2 className="text-lg sm:text-xl font-semibold text-white">
                 Checkout
               </h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-white/80">
                 {items.length} {items.length === 1 ? "item" : "items"}
               </p>
             </div>
           </div>
-          <div className="text-lg font-semibold text-green-600 dark:text-green-400">
+          <div className="text-base font-bold text-white">
             FREE
           </div>
         </div>
 
         {/* Progress Steps */}
-        <div className="flex items-center justify-center gap-2 p-4 border-b border-gray-200/50 dark:border-gray-800/50">
-          {["shipping", "payment", "confirmation"].map((s) => (
-            <button
-              key={s}
-              onClick={() => {
-                if (s === "shipping" || (s === "payment" && step !== "confirmation")) {
-                  setStep(s as CheckoutStep);
-                }
-              }}
-              className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
-                step === s
-                  ? "bg-blue-600 text-white"
-                  : step === "confirmation"
-                  ? "text-gray-400"
-                  : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-            >
-              {s === "shipping" && "Shipping"}
-              {s === "payment" && "Payment"}
-              {s === "confirmation" && "Complete"}
-            </button>
+        <div className="flex items-center justify-center gap-2 p-3 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950">
+          {["shipping", "payment", "confirmation"].map((s, index) => (
+            <div key={s} className="flex items-center gap-2">
+              <button
+                onClick={() => {
+                  if (s === "shipping" || (s === "payment" && step !== "confirmation")) {
+                    setStep(s as CheckoutStep);
+                  }
+                }}
+                className={`px-3 sm:px-4 py-1.5 rounded text-xs sm:text-sm font-medium transition-all ${
+                  step === s
+                    ? "bg-[#2874f0] text-white"
+                    : step === "confirmation"
+                    ? "text-gray-400"
+                    : "text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800"
+                }`}
+              >
+                {s === "shipping" && "Address"}
+                {s === "payment" && "Payment"}
+                {s === "confirmation" && "Done"}
+              </button>
+              {index < 2 && (
+                <div className={`h-px w-6 sm:w-8 ${step === "confirmation" || (step === "payment" && index === 0) ? "bg-[#2874f0]" : "bg-gray-300 dark:bg-gray-700"}`} />
+              )}
+            </div>
           ))}
         </div>
 
@@ -674,43 +678,42 @@ export function Checkout({
 
         {/* Footer */}
         {step !== "confirmation" && (
-          <div className="p-4 sm:p-6 border-t border-gray-200/50 dark:border-gray-800/50">
-            <div className="flex gap-3">
+          <div className="p-3 sm:p-4 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+            <div className="flex gap-2">
               {step === "payment" && (
-                <Button
-                  variant="outline"
+                <button
                   onClick={() => setStep("shipping")}
-                  className="flex-1 h-12 rounded-full font-medium"
+                  className="flex-1 h-11 rounded font-medium border-2 border-[#2874f0] text-[#2874f0] hover:bg-[#2874f0] hover:text-white transition-colors"
                 >
-                  Back
-                </Button>
+                  BACK
+                </button>
               )}
-              <Button
+              <button
                 onClick={step === "shipping" ? handleProceedToPayment : handleConfirmOrder}
                 disabled={isProcessing}
-                className="flex-1 h-12 rounded-full font-semibold bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 h-11 rounded font-semibold bg-[#ffe500] hover:bg-[#ffd000] text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isProcessing ? (
                   <div className="flex items-center justify-center gap-2">
-                    <div className="h-5 w-5 border-2 border-white/30 border-t-transparent border-r-transparent animate-spin rounded-full" />
+                    <div className="h-5 w-5 border-2 border-gray-900/30 border-t-transparent border-r-transparent animate-spin rounded-full" />
                     <span>Processing...</span>
                   </div>
                 ) : (
-                  <>{step === "shipping" ? "Continue to Payment" : "Buy Now"}</>
+                  <>{step === "shipping" ? "CONTINUE" : "PLACE ORDER"}</>
                 )}
-              </Button>
+              </button>
             </div>
           </div>
         )}
 
         {step === "confirmation" && (
-          <div className="p-4 sm:p-6 border-t border-gray-200/50 dark:border-gray-800/50">
-            <Button
+          <div className="p-3 sm:p-4 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+            <button
               onClick={handleReset}
-              className="w-full h-12 rounded-full font-semibold bg-blue-600 hover:bg-blue-700"
+              className="w-full h-11 rounded font-semibold bg-[#ffe500] hover:bg-[#ffd000] text-gray-900 transition-colors"
             >
-              Continue Shopping
-            </Button>
+              CONTINUE SHOPPING
+            </button>
           </div>
         )}
       </div>

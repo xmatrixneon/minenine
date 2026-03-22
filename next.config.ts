@@ -9,7 +9,20 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "fdn2.gsmarena.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "store.storeimages.cdn-apple.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
+    unoptimized: true,
   },
 };
 
