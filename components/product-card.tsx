@@ -63,8 +63,8 @@ export function ProductCard({ iphone, onClick, onQuickAdd }: ProductCardProps) {
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
             {iphone.model}
           </h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            From ₹{selectedStorage.price}
+          <p className="text-sm text-green-600 dark:text-green-400 font-medium">
+            FREE
           </p>
         </div>
 

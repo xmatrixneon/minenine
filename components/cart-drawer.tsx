@@ -95,8 +95,8 @@ export function CartDrawer({
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
                       {item.selectedStorage.storage}
                     </p>
-                    <p className="text-lg font-semibold text-gray-900 dark:text-white">
-                      ₹{item.totalPrice.toLocaleString()}
+                    <p className="text-lg font-semibold text-green-600 dark:text-green-400">
+                      FREE
                     </p>
                   </div>
 
@@ -119,8 +119,8 @@ export function CartDrawer({
           <div className="border-t border-gray-200/50 dark:border-gray-800/50 p-6 space-y-4">
             <div className="flex items-center justify-between text-base">
               <span className="text-gray-600 dark:text-gray-400">Subtotal</span>
-              <span className="text-lg font-semibold text-gray-900 dark:text-white">
-                ₹{subtotal.toLocaleString()}
+              <span className="text-lg font-semibold text-green-600 dark:text-green-400">
+                FREE
               </span>
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400">

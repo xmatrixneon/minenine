@@ -105,8 +105,8 @@ export function ProductDetailSheet({
               )}
             </div>
           </div>
-          <span className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white">
-            ₹{selectedStorage.price}
+          <span className="text-2xl sm:text-3xl font-semibold text-green-600 dark:text-green-400">
+            FREE
           </span>
         </div>
 
@@ -196,11 +196,6 @@ export function ProductDetailSheet({
                   >
                     {storage.storage}
                   </span>
-                  {selectedStorage.storage !== storage.storage && (
-                    <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">
-                      ₹{storage.price}
-                    </span>
-                  )}
                   {selectedStorage.storage === storage.storage && (
                     <svg
                       className="absolute top-2 right-2 h-4 w-4 text-blue-600 dark:text-blue-400"

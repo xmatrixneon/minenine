@@ -36,10 +36,12 @@ interface OrdersModalProps {
 export function OrdersModal({ isOpen, onClose }: OrdersModalProps) {
   const [orders, setOrders] = useState<StoredOrder[]>([]);
 
-  // Load orders from localStorage on mount
+  // Load orders from localStorage on mount and when modal opens
   useEffect(() => {
-    loadOrders();
-  }, []);
+    if (isOpen) {
+      loadOrders();
+    }
+  }, [isOpen]);
 
   const loadOrders = () => {
     try {
@@ -220,7 +222,7 @@ export function OrdersModal({ isOpen, onClose }: OrdersModalProps) {
                       <div className="flex items-center gap-2">
                         <IndianRupee className="h-4 w-4 text-green-600 dark:text-green-400" />
                         <p className="text-xs text-gray-500 dark:text-gray-400">
-                          Payment: {order.paymentMethod === 'apple-pay' ? 'Apple Pay' : order.paymentMethod === 'upi' ? 'UPI' : 'Credit/Debit Card'}
+                          Payment: {order.paymentMethod === 'cod' ? 'Cash on Delivery' : 'UPI'}
                         </p>
                       </div>
                       <div className="flex items-center gap-2">

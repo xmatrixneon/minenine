@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { X, CheckCircle2, Apple, CreditCard, MapPin, Lock, Phone } from "lucide-react";
+import { X, CheckCircle2, CreditCard, MapPin, Lock, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CartItem, Address, CheckoutStep } from "@/types";
 
@@ -72,7 +72,7 @@ export function Checkout({
     zipCode: "",
     phoneNumber: "",
   });
-  const [paymentMethod, setPaymentMethod] = useState<"apple-pay" | "credit-card" | "upi">("apple-pay");
+  const [paymentMethod, setPaymentMethod] = useState<"cod" | "upi">("cod");
   const [errors, setErrors] = useState<Partial<Address>>({});
   const [orderId, setOrderId] = useState<string>("");
   const [trackingId, setTrackingId] = useState<string>("");
@@ -221,7 +221,7 @@ export function Checkout({
       zipCode: "",
       phoneNumber: "",
     });
-    setPaymentMethod("apple-pay");
+    setPaymentMethod("cod");
     setErrors({});
     setOrderId("");
     onClose();
@@ -258,8 +258,8 @@ export function Checkout({
               </p>
             </div>
           </div>
-          <div className="text-lg font-semibold text-gray-900 dark:text-white">
-            ${subtotal.toLocaleString()}
+          <div className="text-lg font-semibold text-green-600 dark:text-green-400">
+            FREE
           </div>
         </div>
 
@@ -489,51 +489,29 @@ export function Checkout({
               {/* Payment Options */}
               <div className="space-y-3">
                 <button
-                  onClick={() => setPaymentMethod("apple-pay")}
+                  onClick={() => setPaymentMethod("cod")}
                   className={`w-full p-4 rounded-xl border-2 transition-all flex items-center gap-4 ${
-                    paymentMethod === "apple-pay"
+                    paymentMethod === "cod"
                       ? "border-blue-600 bg-blue-50 dark:bg-blue-900/20"
                       : "border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700"
                   }`}
                 >
-                  <div className="h-12 w-12 bg-black rounded-lg flex items-center justify-center">
-                    <Apple className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="flex-1 text-left">
-                    <p className="font-semibold text-gray-900 dark:text-white">Apple Pay</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Fast and secure payment
-                    </p>
-                  </div>
-                  {paymentMethod === "apple-pay" && (
-                    <CheckCircle2 className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                  )}
-                </button>
-
-                <button
-                  onClick={() => setPaymentMethod("credit-card")}
-                  className={`w-full p-4 rounded-xl border-2 transition-all flex items-center gap-4 ${
-                    paymentMethod === "credit-card"
-                      ? "border-blue-600 bg-blue-50 dark:bg-blue-900/20"
-                      : "border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700"
-                  }`}
-                >
-                  <div className="h-12 w-12 bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg flex items-center justify-center">
+                  <div className="h-12 w-12 bg-green-600 rounded-lg flex items-center justify-center">
                     <CreditCard className="h-6 w-6 text-white" />
                   </div>
                   <div className="flex-1 text-left">
-                    <p className="font-semibold text-gray-900 dark:text-white">Credit / Debit Card</p>
+                    <p className="font-semibold text-gray-900 dark:text-white">Cash on Delivery</p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Visa, Mastercard, Rupay, Amex
+                      Pay when you receive your order
                     </p>
                   </div>
-                  {paymentMethod === "credit-card" && (
+                  {paymentMethod === "cod" && (
                     <CheckCircle2 className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                   )}
                 </button>
 
                 <button
-                  onClick={() => setPaymentMethod("credit-card")}
+                  onClick={() => setPaymentMethod("upi")}
                   className={`w-full p-4 rounded-xl border-2 transition-all flex items-center gap-4 ${
                     paymentMethod === "upi"
                       ? "border-blue-600 bg-blue-50 dark:bg-blue-900/20"
@@ -566,21 +544,17 @@ export function Checkout({
                       <span className="text-gray-600 dark:text-gray-400">
                         {item.model} - {item.selectedColor.name}
                       </span>
-                      <span className="text-gray-900 dark:text-white font-medium">
-                        ₹{item.totalPrice.toLocaleString()}
+                      <span className="text-green-600 dark:text-green-400 font-medium">
+                        FREE
                       </span>
                     </div>
                   ))}
-                  <div className="flex justify-between text-green-600 dark:text-green-400">
-                    <span className="text-sm font-medium">Discount</span>
-                    <span className="text-sm font-medium">₹1 off (Free for you!)</span>
-                  </div>
                   <div className="border-t border-gray-200 dark:border-gray-800 pt-3 flex justify-between">
                     <span className="text-base font-semibold text-gray-900 dark:text-white">
                       You Pay
                     </span>
                     <span className="text-base font-bold text-green-600 dark:text-green-400">
-                      ₹0
+                      ₹0 (Cash on Delivery)
                     </span>
                   </div>
                 </div>
@@ -682,7 +656,10 @@ export function Checkout({
                 </p>
                 <div className="mt-4 pt-4 border-t border-green-200 dark:border-green-700">
                   <p className="text-sm font-semibold text-green-700 dark:text-green-300">
-                    💝 You paid: ₹0 (FREE!)
+                    💝 Payment: {paymentMethod === 'cod' ? 'Cash on Delivery' : 'UPI'}
+                  </p>
+                  <p className="text-sm font-semibold text-green-700 dark:text-green-300 mt-1">
+                    💝 Total: ₹0 (FREE!)
                   </p>
                 </div>
               </div>

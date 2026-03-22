@@ -19,7 +19,7 @@ export const iphones: Iphone[] = [
     model: "iPhone 16 Pro Max",
     tagline: "Titanium. So strong. So light. So Pro.",
     description: "The ultimate iPhone with A18 Pro chip, 48MP camera system, and all-day battery life.",
-    basePrice: 1,
+    basePrice: 0,
     colors: [
       { name: "Natural Titanium", hex: "#A89F91", class: "bg-[#A89F91]" },
       { name: "Blue Titanium", hex: "#4A6FA5", class: "bg-[#4A6FA5]" },
@@ -27,9 +27,9 @@ export const iphones: Iphone[] = [
       { name: "Black Titanium", hex: "#1D1D1F", class: "bg-[#1D1D1F]" },
     ],
     storageOptions: [
-      { storage: "256GB", price: 1 },
-      { storage: "512GB", price: 1 },
-      { storage: "1TB", price: 1 },
+      { storage: "256GB", price: 0 },
+      { storage: "512GB", price: 0 },
+      { storage: "1TB", price: 0 },
     ],
     image: iPhoneImages["iphone-16-pro-max"],
     isNew: true,
@@ -66,9 +66,9 @@ export const iphones: Iphone[] = [
       },
       storage: {
         options: [
-          { storage: "256GB", price: 1 },
-          { storage: "512GB", price: 1 },
-          { storage: "1TB", price: 1 },
+          { storage: "256GB", price: 0 },
+          { storage: "512GB", price: 0 },
+          { storage: "1TB", price: 0 },
         ],
       },
       physical: {
@@ -89,7 +89,7 @@ export const iphones: Iphone[] = [
     model: "iPhone 16 Pro",
     tagline: "The ultimate iPhone.",
     description: "A18 Pro chip, 48MP camera, titanium design, and Action button.",
-    basePrice: 1,
+    basePrice: 0,
     colors: [
       { name: "Natural Titanium", hex: "#A89F91", class: "bg-[#A89F91]" },
       { name: "Blue Titanium", hex: "#4A6FA5", class: "bg-[#4A6FA5]" },
@@ -97,10 +97,10 @@ export const iphones: Iphone[] = [
       { name: "Black Titanium", hex: "#1D1D1F", class: "bg-[#1D1D1F]" },
     ],
     storageOptions: [
-      { storage: "128GB", price: 1 },
-      { storage: "256GB", price: 1 },
-      { storage: "512GB", price: 1 },
-      { storage: "1TB", price: 1 },
+      { storage: "128GB", price: 0 },
+      { storage: "256GB", price: 0 },
+      { storage: "512GB", price: 0 },
+      { storage: "1TB", price: 0 },
     ],
     image: iPhoneImages["iphone-16-pro"],
     isNew: true,
@@ -137,10 +137,10 @@ export const iphones: Iphone[] = [
       },
       storage: {
         options: [
-          { storage: "128GB", price: 1 },
-          { storage: "256GB", price: 1 },
-          { storage: "512GB", price: 1 },
-          { storage: "1TB", price: 1 },
+          { storage: "128GB", price: 0 },
+          { storage: "256GB", price: 0 },
+          { storage: "512GB", price: 0 },
+          { storage: "1TB", price: 0 },
         ],
       },
       physical: {
@@ -161,7 +161,7 @@ export const iphones: Iphone[] = [
     model: "iPhone 16 Plus",
     tagline: "Superbigger display.",
     description: "Large 6.7-inch display, A18 chip, and all-day battery life.",
-    basePrice: 1,
+    basePrice: 0,
     colors: [
       { name: "Black", hex: "#1D1D1F", class: "bg-[#1D1D1F]" },
       { name: "White", hex: "#F5F5F3", class: "bg-[#F5F5F3]" },
@@ -170,9 +170,9 @@ export const iphones: Iphone[] = [
       { name: "Ultramarine", hex: "#6B9BD2", class: "bg-[#6B9BD2]" },
     ],
     storageOptions: [
-      { storage: "128GB", price: 1 },
-      { storage: "256GB", price: 1 },
-      { storage: "512GB", price: 1 },
+      { storage: "128GB", price: 0 },
+      { storage: "256GB", price: 0 },
+      { storage: "512GB", price: 0 },
     ],
     image: iPhoneImages["iphone-16-plus"],
     isNew: true,
@@ -208,9 +208,9 @@ export const iphones: Iphone[] = [
       },
       storage: {
         options: [
-          { storage: "128GB", price: 1 },
-          { storage: "256GB", price: 1 },
-          { storage: "512GB", price: 1 },
+          { storage: "128GB", price: 0 },
+          { storage: "256GB", price: 0 },
+          { storage: "512GB", price: 0 },
         ],
       },
       physical: {
@@ -231,7 +231,7 @@ export const iphones: Iphone[] = [
     model: "iPhone 16",
     tagline: "Hello, Apple Intelligence.",
     description: "A18 chip, Camera Control, and all-new design.",
-    basePrice: 1,
+    basePrice: 0,
     colors: [
       { name: "Black", hex: "#1D1D1F", class: "bg-[#1D1D1F]" },
       { name: "White", hex: "#F5F5F3", class: "bg-[#F5F5F3]" },
@@ -240,9 +240,9 @@ export const iphones: Iphone[] = [
       { name: "Ultramarine", hex: "#6B9BD2", class: "bg-[#6B9BD2]" },
     ],
     storageOptions: [
-      { storage: "128GB", price: 1 },
-      { storage: "256GB", price: 1 },
-      { storage: "512GB", price: 1 },
+      { storage: "128GB", price: 0 },
+      { storage: "256GB", price: 0 },
+      { storage: "512GB", price: 0 },
     ],
     image: iPhoneImages["iphone-16"],
     isNew: true,
@@ -278,9 +278,9 @@ export const iphones: Iphone[] = [
       },
       storage: {
         options: [
-          { storage: "128GB", price: 1 },
-          { storage: "256GB", price: 1 },
-          { storage: "512GB", price: 1 },
+          { storage: "128GB", price: 0 },
+          { storage: "256GB", price: 0 },
+          { storage: "512GB", price: 0 },
         ],
       },
       physical: {
@@ -301,7 +301,7 @@ export const iphones: Iphone[] = [
     model: "iPhone 15 Pro Max",
     tagline: "Titanium. So strong. So light. So Pro.",
     description: "A17 Pro chip, 48MP camera, titanium design, and USB-C.",
-    basePrice: 1,
+    basePrice: 0,
     colors: [
       { name: "Natural Titanium", hex: "#A89F91", class: "bg-[#A89F91]" },
       { name: "Blue Titanium", hex: "#4A6FA5", class: "bg-[#4A6FA5]" },
@@ -309,9 +309,9 @@ export const iphones: Iphone[] = [
       { name: "Black Titanium", hex: "#1D1D1F", class: "bg-[#1D1D1F]" },
     ],
     storageOptions: [
-      { storage: "256GB", price: 1 },
-      { storage: "512GB", price: 1 },
-      { storage: "1TB", price: 1 },
+      { storage: "256GB", price: 0 },
+      { storage: "512GB", price: 0 },
+      { storage: "1TB", price: 0 },
     ],
     image: iPhoneImages["iphone-15-pro-max"],
     isNew: false,
@@ -348,9 +348,9 @@ export const iphones: Iphone[] = [
       },
       storage: {
         options: [
-          { storage: "256GB", price: 1 },
-          { storage: "512GB", price: 1 },
-          { storage: "1TB", price: 1 },
+          { storage: "256GB", price: 0 },
+          { storage: "512GB", price: 0 },
+          { storage: "1TB", price: 0 },
         ],
       },
       physical: {
@@ -371,7 +371,7 @@ export const iphones: Iphone[] = [
     model: "iPhone 15 Pro",
     tagline: "The ultimate iPhone.",
     description: "A17 Pro chip, 48MP camera, titanium design, and Action button.",
-    basePrice: 1,
+    basePrice: 0,
     colors: [
       { name: "Natural Titanium", hex: "#A89F91", class: "bg-[#A89F91]" },
       { name: "Blue Titanium", hex: "#4A6FA5", class: "bg-[#4A6FA5]" },
@@ -379,10 +379,10 @@ export const iphones: Iphone[] = [
       { name: "Black Titanium", hex: "#1D1D1F", class: "bg-[#1D1D1F]" },
     ],
     storageOptions: [
-      { storage: "128GB", price: 1 },
-      { storage: "256GB", price: 1 },
-      { storage: "512GB", price: 1 },
-      { storage: "1TB", price: 1 },
+      { storage: "128GB", price: 0 },
+      { storage: "256GB", price: 0 },
+      { storage: "512GB", price: 0 },
+      { storage: "1TB", price: 0 },
     ],
     image: iPhoneImages["iphone-15-pro"],
     isNew: false,
@@ -419,10 +419,10 @@ export const iphones: Iphone[] = [
       },
       storage: {
         options: [
-          { storage: "128GB", price: 1 },
-          { storage: "256GB", price: 1 },
-          { storage: "512GB", price: 1 },
-          { storage: "1TB", price: 1 },
+          { storage: "128GB", price: 0 },
+          { storage: "256GB", price: 0 },
+          { storage: "512GB", price: 0 },
+          { storage: "1TB", price: 0 },
         ],
       },
       physical: {
@@ -443,7 +443,7 @@ export const iphones: Iphone[] = [
     model: "iPhone 15 Plus",
     tagline: "Big and beautiful.",
     description: "Large 6.7-inch display, A16 chip, and Dynamic Island.",
-    basePrice: 1,
+    basePrice: 0,
     colors: [
       { name: "Black", hex: "#1D1D1F", class: "bg-[#1D1D1F]" },
       { name: "Blue", hex: "#3C82F6", class: "bg-[#3C82F6]" },
@@ -452,9 +452,9 @@ export const iphones: Iphone[] = [
       { name: "Pink", hex: "#F9A8D4", class: "bg-[#F9A8D4]" },
     ],
     storageOptions: [
-      { storage: "128GB", price: 1 },
-      { storage: "256GB", price: 1 },
-      { storage: "512GB", price: 1 },
+      { storage: "128GB", price: 0 },
+      { storage: "256GB", price: 0 },
+      { storage: "512GB", price: 0 },
     ],
     image: iPhoneImages["iphone-15-plus"],
     isNew: false,
@@ -490,9 +490,9 @@ export const iphones: Iphone[] = [
       },
       storage: {
         options: [
-          { storage: "128GB", price: 1 },
-          { storage: "256GB", price: 1 },
-          { storage: "512GB", price: 1 },
+          { storage: "128GB", price: 0 },
+          { storage: "256GB", price: 0 },
+          { storage: "512GB", price: 0 },
         ],
       },
       physical: {
@@ -513,7 +513,7 @@ export const iphones: Iphone[] = [
     model: "iPhone 15",
     tagline: "New camera. New design. Newphoria.",
     description: "A16 chip, 48MP camera, Dynamic Island, and USB-C.",
-    basePrice: 1,
+    basePrice: 0,
     colors: [
       { name: "Black", hex: "#1D1D1F", class: "bg-[#1D1D1F]" },
       { name: "Blue", hex: "#3C82F6", class: "bg-[#3C82F6]" },
@@ -522,9 +522,9 @@ export const iphones: Iphone[] = [
       { name: "Pink", hex: "#F9A8D4", class: "bg-[#F9A8D4]" },
     ],
     storageOptions: [
-      { storage: "128GB", price: 1 },
-      { storage: "256GB", price: 1 },
-      { storage: "512GB", price: 1 },
+      { storage: "128GB", price: 0 },
+      { storage: "256GB", price: 0 },
+      { storage: "512GB", price: 0 },
     ],
     image: iPhoneImages["iphone-15"],
     isNew: false,
@@ -560,9 +560,9 @@ export const iphones: Iphone[] = [
       },
       storage: {
         options: [
-          { storage: "128GB", price: 1 },
-          { storage: "256GB", price: 1 },
-          { storage: "512GB", price: 1 },
+          { storage: "128GB", price: 0 },
+          { storage: "256GB", price: 0 },
+          { storage: "512GB", price: 0 },
         ],
       },
       physical: {
@@ -583,16 +583,16 @@ export const iphones: Iphone[] = [
     model: "iPhone SE",
     tagline: "Serious power. Serious value.",
     description: "A15 Bionic chip, advanced camera system, and all-day battery life.",
-    basePrice: 1,
+    basePrice: 0,
     colors: [
       { name: "Black", hex: "#1D1D1F", class: "bg-[#1D1D1F]" },
       { name: "White", hex: "#F5F5F3", class: "bg-[#F5F5F3]" },
       { name: "Red", hex: "#EF4444", class: "bg-[#EF4444]" },
     ],
     storageOptions: [
-      { storage: "64GB", price: 1 },
-      { storage: "128GB", price: 1 },
-      { storage: "256GB", price: 1 },
+      { storage: "64GB", price: 0 },
+      { storage: "128GB", price: 0 },
+      { storage: "256GB", price: 0 },
     ],
     image: iPhoneImages["iphone-se"],
     isNew: false,
@@ -627,9 +627,9 @@ export const iphones: Iphone[] = [
       },
       storage: {
         options: [
-          { storage: "64GB", price: 1 },
-          { storage: "128GB", price: 1 },
-          { storage: "256GB", price: 1 },
+          { storage: "64GB", price: 0 },
+          { storage: "128GB", price: 0 },
+          { storage: "256GB", price: 0 },
         ],
       },
       physical: {

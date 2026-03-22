@@ -39,8 +39,8 @@ export function StickyActionBar({
                 <p className="text-sm text-gray-600 dark:text-gray-400 truncate">
                   {productName}
                 </p>
-                <p className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">
-                  ${price?.toLocaleString()}
+                <p className="text-xl sm:text-2xl font-semibold text-green-600 dark:text-green-400">
+                  FREE
                 </p>
               </div>
             ) : (
@@ -60,8 +60,8 @@ export function StickyActionBar({
                   <p className="text-sm text-gray-600 dark:text-gray-400">
                     {cartCount} {cartCount === 1 ? "item" : "items"}
                   </p>
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white">
-                    ${subtotal.toLocaleString()}
+                  <p className="text-lg font-semibold text-green-600 dark:text-green-400">
+                    FREE
                   </p>
                 </div>
                 <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors" />
