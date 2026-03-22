@@ -8,7 +8,7 @@ import { MobileBottomNav } from "@/components/mobile-bottom-nav";
 import { ProductDetailSheet } from "@/components/product-detail-sheet";
 import { Checkout } from "@/components/checkout";
 import { OrdersModal } from "@/components/orders-modal";
-import { iphones } from "@/data/iphones";
+import { products } from "@/data/iphones";
 import { Iphone, ColorVariant, StoragePricing, Address } from "@/types";
 
 type ViewMode = "home" | "product-detail";
@@ -124,7 +124,7 @@ export default function Home() {
 
               {/* Products Grid - Bigger cards */}
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
-                {iphones.map((iphone, index) => (
+                {products.map((iphone, index) => (
                   <div
                     key={iphone.id}
                     className="animate-in fade-in slide-in-from-bottom-4 duration-500"

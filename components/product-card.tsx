@@ -54,7 +54,8 @@ export function ProductCard({ iphone, onClick }: ProductCardProps) {
           <img
             src={iphone.image}
             alt={iphone.model}
-            className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-110"
+            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+            style={{ minHeight: '280px', maxHeight: '400px' }}
           />
         </div>
       </div>

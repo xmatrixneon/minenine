@@ -5,11 +5,11 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight, Pause, Play, Smartphone } from "lucide-react";
 
 const shoppingImages = [
-  "/images/iphones/shopping3.webp",
-  "/images/iphones/shopping.webp",
-  "/images/iphones/shopping1.webp",
-  "/images/iphones/shopping4.webp",
-  "/images/iphones/shopping5.webp",
+  "/images/iphones/banner.jpg",
+  "/images/iphones/banner2.jpg",
+  "/images/iphones/banner3.jpg",
+  "/images/iphones/banner4.jpg",
+  "/images/iphones/banner5.jpg",
 ];
 
 export function HeroSlideshow() {
@@ -48,14 +48,14 @@ export function HeroSlideshow() {
   return (
     <section className="relative w-full overflow-hidden">
       {/* Full-width Hero Slideshow */}
-      <div className="relative w-full h-[50vh] sm:h-[60vh] lg:h-[70vh] bg-gradient-to-br from-[#2874f0] to-[#1a5bbf]">
+      <div className="relative w-full h-[50vh] sm:h-[60vh] lg:h-[70vh] bg-gray-100 dark:bg-gray-900">
         {/* Background Image - Full width */}
         <div className="absolute inset-0 transition-opacity duration-700 ease-in-out">
           <Image
             src={currentImage}
             alt={`Shopping ${currentIndex + 1}`}
             fill
-            className="object-cover object-center opacity-90"
+            className="object-contain object-center opacity-90"
             priority
             quality={95}
           />
