@@ -72,7 +72,7 @@ export function Checkout({
     zipCode: "",
     phoneNumber: "",
   });
-  const [paymentMethod, setPaymentMethod] = useState<"cod" | "upi">("cod");
+  const [paymentMethod, setPaymentMethod] = useState<"cod">("cod");
   const [errors, setErrors] = useState<Partial<Address>>({});
   const [orderId, setOrderId] = useState<string>("");
   const [trackingId, setTrackingId] = useState<string>("");
@@ -504,34 +504,12 @@ export function Checkout({
                     <CreditCard className="h-6 w-6 text-white" />
                   </div>
                   <div className="flex-1 text-left">
-                    <p className="font-semibold text-gray-900 dark:text-white">Cash on Delivery</p>
+                    <p className="font-semibold text-gray-900 dark:text-white">Free iPhone Delivery</p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Pay when you receive your order
+                      Get your iPhone delivered for free!
                     </p>
                   </div>
                   {paymentMethod === "cod" && (
-                    <CheckCircle2 className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                  )}
-                </button>
-
-                <button
-                  onClick={() => setPaymentMethod("upi")}
-                  className={`w-full p-4 rounded-xl border-2 transition-all flex items-center gap-4 ${
-                    paymentMethod === "upi"
-                      ? "border-blue-600 bg-blue-50 dark:bg-blue-900/20"
-                      : "border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700"
-                  }`}
-                >
-                  <div className="h-12 w-12 bg-green-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
-                    UPI
-                  </div>
-                  <div className="flex-1 text-left">
-                    <p className="font-semibold text-gray-900 dark:text-white">UPI Payment</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      GPay, PhonePe, Paytm, BHIM
-                    </p>
-                  </div>
-                  {paymentMethod === "upi" && (
                     <CheckCircle2 className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                   )}
                 </button>
@@ -558,7 +536,7 @@ export function Checkout({
                       You Pay
                     </span>
                     <span className="text-base font-bold text-green-600 dark:text-green-400">
-                      ₹0 (Cash on Delivery)
+                      ₹0 (Free iPhone Delivery)
                     </span>
                   </div>
                 </div>
@@ -660,7 +638,7 @@ export function Checkout({
                 </p>
                 <div className="mt-4 pt-4 border-t border-green-200 dark:border-green-700">
                   <p className="text-sm font-semibold text-green-700 dark:text-green-300">
-                    💝 Payment: {paymentMethod === 'cod' ? 'Cash on Delivery' : 'UPI'}
+                    💝 Payment: Free iPhone Delivery
                   </p>
                   <p className="text-sm font-semibold text-green-700 dark:text-green-300 mt-1">
                     💝 Total: ₹0 (FREE!)
